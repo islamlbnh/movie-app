@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent; /* Tailwind gray-700 and gray-100 */
+}
+body {
+  @apply bg-[#211212];
+  box-sizing: border-box;
+}

@@ -11,7 +11,7 @@ const Moviecard = ({ posterPath, title, overview, rating }: MoviecardProps) => {
       <img
         src={posterPath}
         alt={`${title} Poster`}
-        className="movie-card__poster w-[160px] h-full object-cover rounded-l"
+        className="movie-card__poster w-[200px] h-full object-cover rounded-l"
       />
       <div className="movie-card__details flex flex-col justify-between p-4 flex-1 bg-gradient-to-br  from-transparent to-zinc-500 mask-gradient-to-r ">
         <div>

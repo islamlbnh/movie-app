@@ -2,6 +2,14 @@ import axios from "axios";
 import type { AxiosInstance, AxiosResponse } from "axios";
 import { apiKey, apiBaseUrl } from "./endpoints";
 
+// Define the MoviesResponse type based on expected API response structure
+export interface MoviesResponse {
+  page: number;
+  results: Array<any>; // Replace 'any' with a proper Movie type if available
+  total_pages: number;
+  total_results: number;
+}
+
 // Optionally, define types for movie data if available
 // interface Movie { ... }
 // interface MovieDetails { ... }
@@ -19,9 +27,15 @@ export function getMovieDetails(
   return movieApi.get(`/movie/${movieId}`);
 }
 
-export function getPopularMovies(): Promise<AxiosResponse<unknown>> {
-  return movieApi.get(`/movie/popular`);
+export function getPopularMovies(page: number = 1): Promise<AxiosResponse<MoviesResponse>> {
+  return axios.get(`${apiBaseUrl}/movie/popular`, {
+    params: {
+      api_key: apiKey,
+      page,
+    },
+  });
 }
+
 
 export function getTopRatedMovies(): Promise<AxiosResponse<unknown>> {
   return movieApi.get(`/movie/top_rated`);

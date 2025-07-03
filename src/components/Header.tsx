@@ -1,4 +1,14 @@
+import Toggle from "./Toggle";
+import { useState } from "react";
+
 const Header = () => {
+  const categories = ["Action", "Comedy", "Drama", "Horror", "Sci-Fi"];
+  const genres = ["Adventure", "Romance", "Thriller", "Animation", "Fantasy"];
+  const years = Array.from({ length: 20 }, (_, i) => `${2024 - i}`);
+  const [showYear, setShowYear] = useState(false);
+  const [showCategory, setShowCategory] = useState(false);
+  const [showGenre, setShowGenre] = useState(false);
+
   return (
     <div className="flex items-center gap-2 px-6 py-2  bg-[#211212] text-white border-b-[1px] border-[#e5e8eb]">
       <span className="flex items-center gap-2">
@@ -7,7 +17,8 @@ const Header = () => {
           height="16"
           viewBox="0 0 16 16"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg">
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <g clip-path="url(#clip0_1_7)">
             <path
               fill-rule="evenodd"
@@ -24,6 +35,47 @@ const Header = () => {
         </svg>
         <span className="text-lg font-semibold">Header</span>
       </span>
+      <div className="ml-auto flex items-center gap-4">
+        <ul className="flex items-center gap-4 ">
+          <li className="relative">
+            <button className="px-4 py-2 text-white rounded ">Home</button>
+          </li>
+          <li
+            className="relative"
+            onMouseEnter={() => setShowYear(true)}
+            onMouseLeave={() => setShowYear(false)}
+          >
+            <button className="px-4 py-2 text-white rounded">Year</button>
+            <Toggle data={years} show={showYear} />
+          </li>
+          <li
+            className="relative"
+            onMouseEnter={() => setShowCategory(true)}
+            onMouseLeave={() => setShowCategory(false)}
+          >
+            <button className="px-4 py-2 text-white rounded">Category</button>
+            <Toggle data={categories} show={showCategory} />
+          </li>
+          <li
+            className="relative"
+            onMouseEnter={() => setShowGenre(true)}
+            onMouseLeave={() => setShowGenre(false)}
+          >
+            <button className="px-4 py-2 text-white rounded">Genre</button>
+            <Toggle data={genres} show={showGenre} />
+          </li>
+          <li>
+            <button className="px-4 py-2 bg-blue-500 text-white rounded mr-2">
+              Sign Up
+            </button>
+          </li>
+          <li>
+            <button className="px-4 py-2 bg-red-500 text-white rounded">
+              Login
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

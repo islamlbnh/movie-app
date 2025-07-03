@@ -1,5 +1,6 @@
 import Toggle from "./Toggle";
 import { useState } from "react";
+import Button from "./common/Button/Button";
 
 const Header = () => {
   const categories = ["Action", "Comedy", "Drama", "Horror", "Sci-Fi"];
@@ -65,14 +66,7 @@ const Header = () => {
             <Toggle data={genres} show={showGenre} />
           </li>
           <li>
-            <button className="px-4 py-2 bg-blue-500 text-white rounded mr-2">
-              Sign Up
-            </button>
-          </li>
-          <li>
-            <button className="px-4 py-2 bg-red-500 text-white rounded">
-              Login
-            </button>
+            <Button>Login</Button>
           </li>
         </ul>
       </div>

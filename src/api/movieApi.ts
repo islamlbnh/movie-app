@@ -24,13 +24,15 @@ export const movieApi: AxiosInstance = axios.create({
 export function getMovieDetails(
   movieId: number | string
 ): Promise<AxiosResponse<unknown>> {
+  console.log("Movie ID from params:", movieId);
+
   return movieApi.get(`/movie/${movieId}`);
 }
 
 export function getPopularMovies(page: number = 1): Promise<AxiosResponse<MoviesResponse>> {
-  return axios.get(`${apiBaseUrl}/movie/popular`, {
+  return movieApi.get("/movie/popular", {
     params: {
-      api_key: apiKey,
+      
       page,
     },
   });

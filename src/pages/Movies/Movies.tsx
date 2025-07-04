@@ -2,6 +2,7 @@ import { getPopularMovies } from "../../api/movieApi";
 import Moviecard from "../../components/common/Card/Moviecard";
 import { useRef, useCallback } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
+
 type Movie = {
   id: number;
   poster_path: string;
@@ -59,8 +60,13 @@ const lastMovieRef = useCallback(
 );
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Something went wrong. Please try again later.</div>;
-  if (error instanceof Error) return <div className="error">Error: {error.message}</div>;
+  if (error) {
+    return (
+      <div className="error">
+        Error: {(error as Error).message ?? "Something went wrong. Please try again later."}
+      </div>
+    );
+  }
 
   return (
     <div className="movies-list flex flex-wrap justify-center gap-4 p-4 items-center">
@@ -73,6 +79,7 @@ const lastMovieRef = useCallback(
                 title={movie.title}
                 overview={movie.overview}
                 rating={movie.vote_average}
+                id={movie.id}
               />
             </div>
           );
@@ -84,10 +91,14 @@ const lastMovieRef = useCallback(
             title={movie.title}
             overview={movie.overview}
             rating={movie.vote_average}
+            id={movie.id}
           />
         );
       })}
-      {isFetchingNextPage && <div className="spinner">Loading more...</div>}
+      <div className="flex justify-center w-full mt-6">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-4 border-b-4 border-blue-500"></div>
+        <span className="ml-3 text-blue-600 font-semibold">Loading more...</span>
+      </div>
     </div>
   );
 }

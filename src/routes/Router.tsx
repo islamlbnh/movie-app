@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Home from "../pages/Home";
 import Header from "../components/Header";
 import Movies from "../pages/Movies/Movies";
+import { MovieDetails } from "../pages/Movies/Moviedetails";
 
 const AppRoutes = () => {
   const queryClient = new QueryClient();
@@ -10,10 +11,10 @@ const AppRoutes = () => {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Header />
-        <Movies />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:id" element={<MovieDetails />} />
         </Routes>
       </Router>
     </QueryClientProvider>

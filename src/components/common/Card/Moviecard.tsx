@@ -1,13 +1,19 @@
+
+import { useNavigate } from "react-router-dom";
 type MoviecardProps = {
   posterPath: string;
   title: string;
   overview: string;
   rating: number;
+  id: number;
 };
-
-const Moviecard = ({ posterPath, title, overview, rating }: MoviecardProps) => {
+const Moviecard = ({ posterPath, title, overview, rating, id }: MoviecardProps & { id: number }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/movies/${id}`);
+  };
   return (
-    <div className="movie-card text-gray-200  rounded shadow flex w-[445px] h-[480px] overflow-hidden transition-transform hover:scale-105 duration-200 mx-auto">
+    <div onClick={handleClick} className="movie-card text-gray-200 rounded shadow flex w-[445px] h-[480px] overflow-hidden transition-transform hover:scale-105 duration-200 mx-auto cursor-pointer">
       <img
         src={posterPath}
         alt={`${title} Poster`}

@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import Header from "../components/Header";
 import Movies from "../pages/Movies/Movies";
 import { MovieDetails } from "../pages/Movies/Moviedetails";
+import Footer from "../components/Footer";
 
 const AppRoutes = () => {
   const queryClient = new QueryClient();
@@ -16,6 +17,7 @@ const AppRoutes = () => {
           <Route path="/movies" element={<Movies />} />
           <Route path="/movies/:id" element={<MovieDetails />} />
         </Routes>
+        <Footer />
       </Router>
     </QueryClientProvider>
   );

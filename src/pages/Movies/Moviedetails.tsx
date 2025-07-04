@@ -22,7 +22,7 @@ export const MovieDetails = () => {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center py-12"
+      className="h-screen w-screen flex items-center justify-center py-12"
       style={{
         background: "linear-gradient(180deg, #211212 0%, #444 100%)",
         position: "relative",

@@ -9,5 +9,6 @@
 body {
   @apply bg-[#211212];
   box-sizing: border-box;
-  @apply text-gray-100;
+  @apply text-gray-100 ;
+
 }

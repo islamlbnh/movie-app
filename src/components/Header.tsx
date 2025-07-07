@@ -11,7 +11,7 @@ const Header = () => {
   const [showGenre, setShowGenre] = useState(false);
 
   return (
-    <div className="flex items-center gap-2 px-6 py-2  bg-[#211212] text-white border-b-[1px] border-[#e5e8eb]">
+    <div className="flex items-center gap-2 px-6 py-2  bg-[#211212] text-white border-b-[1px] border-[#e5e8eb] overflow-hidden">
       <span className="flex items-center gap-2">
         <svg
           width="16"
